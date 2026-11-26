@@ -4,7 +4,7 @@
 create table if not exists public.favorites (
   id          bigint generated always as identity primary key,
   user_id     uuid not null default auth.uid() references auth.users (id) on delete cascade,
-  pokemon_id  integer not null check (pokemon_id between 1 and 151),
+  pokemon_id  integer not null check (pokemon_id > 0),
   created_at  timestamptz not null default now(),
   unique (user_id, pokemon_id)
 );

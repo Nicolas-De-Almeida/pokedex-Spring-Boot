@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Modal from './Modal'
 import TypeBadge from './TypeBadge'
 import StatBar from './StatBar'
@@ -6,7 +7,28 @@ import usePokemonSpecies from '../hooks/usePokemonSpecies'
 import { STATS, TYPE_COLORS, formatId, totalStats, typeGradient } from '../utils/pokemon'
 import '../css/PokemonDetails.css'
 
-export default function PokemonDetails({ pokemon, trainers, isFavorite, onToggleFavorite, onClose, onPrev, onNext }) {
+export default function PokemonDetails({ pokemon, trainers, isFavorite, onToggleFavorite, onEdit, onDelete, onClose, onPrev, onNext }) {
+  const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deleting, setDeleting] = useState(false)
+  const [deleteError, setDeleteError] = useState('')
+
+  // Ao navegar para outro Pokémon, cancela a confirmação pendente
+  useEffect(() => {
+    setConfirmDelete(false)
+    setDeleteError('')
+  }, [pokemon.id])
+
+  const handleDelete = async () => {
+    setDeleting(true)
+    setDeleteError('')
+    try {
+      await onDelete(pokemon)
+    } catch (err) {
+      setDeleteError(err.message)
+      setDeleting(false)
+    }
+  }
+
   const { info, loading } = usePokemonSpecies(pokemon.id)
   const color = TYPE_COLORS[pokemon.types[0].name]
 
@@ -90,6 +112,30 @@ export default function PokemonDetails({ pokemon, trainers, isFavorite, onToggle
               </div>
             </>
           )}
+
+          <div className="details__actions">
+            {confirmDelete ? (
+              <>
+                <span className="details__confirm">Excluir {pokemon.name} da Pokédex?</span>
+                <button className="btn" onClick={() => setConfirmDelete(false)} disabled={deleting}>
+                  Cancelar
+                </button>
+                <button className="btn btn--danger" onClick={handleDelete} disabled={deleting}>
+                  {deleting ? '⏳ Excluindo...' : '🗑️ Sim, excluir'}
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="btn" onClick={onEdit}>
+                  ✏️ Editar
+                </button>
+                <button className="btn btn--danger-outline" onClick={() => setConfirmDelete(true)}>
+                  🗑️ Excluir
+                </button>
+              </>
+            )}
+          </div>
+          {deleteError && <p className="details__error">⚠️ {deleteError}</p>}
         </div>
       </div>
     </Modal>

@@ -1,0 +1,60 @@
+### Requisições de exemplo (REST Client do VS Code / IntelliJ HTTP Client).
+### Também podem ser reproduzidas no Postman, Insomnia ou Thunder Client.
+@api = http://localhost:8080/api
+
+### Lista todos os Pokémon
+GET {{api}}/pokemons
+
+### Busca um Pokémon pelo ID
+GET {{api}}/pokemons/25
+
+### Busca por nome e/ou tipo (desafio opcional)
+GET {{api}}/pokemons?name=char&type=Fire
+
+### Consulta por tipo
+GET {{api}}/pokemons/type/Dragon
+
+### Cadastra um Pokémon (sem "id", a API usa o próximo número livre)
+POST {{api}}/pokemons
+Content-Type: application/json
+
+{
+  "name": "Chikorita",
+  "hp": 45,
+  "attack": 49,
+  "defense": 65,
+  "specialAttack": 49,
+  "specialDefense": 65,
+  "speed": 45,
+  "types": ["Grass"]
+}
+
+### Atualiza um Pokémon
+PUT {{api}}/pokemons/152
+Content-Type: application/json
+
+{
+  "name": "Chikorita",
+  "hp": 50,
+  "attack": 49,
+  "defense": 65,
+  "specialAttack": 49,
+  "specialDefense": 65,
+  "speed": 45,
+  "types": ["Grass"]
+}
+
+### Remove um Pokémon
+DELETE {{api}}/pokemons/152
+
+### Tipos
+GET {{api}}/types
+
+### Treinadores
+GET {{api}}/trainers
+
+### Equipe de um treinador (relação treinador ↔ Pokémon)
+GET {{api}}/trainers/1/pokemons
+
+### Treinadores que possuem um Pokémon
+GET {{api}}/pokemons/149/trainers

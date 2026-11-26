@@ -166,3 +166,27 @@
     grid-column: span 2;
   }
 }
+
+/* Ações de edição/exclusão (API) */
+.details__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.details__confirm {
+  margin-right: auto;
+  font-weight: 700;
+}
+
+.details__error {
+  margin: 10px 0 0;
+  color: #d23c3c;
+  font-weight: 700;
+  text-align: right;
+}

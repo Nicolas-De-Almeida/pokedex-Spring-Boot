@@ -1,5 +1,15 @@
+# Node / Vite
 node_modules
 dist
 *.log
+
+# Java / Maven
+target/
+*.class
+.idea/
+*.iml
+.vscode/
+
+# Variáveis de ambiente (credenciais do MongoDB / Supabase)
 .env
 .env.local

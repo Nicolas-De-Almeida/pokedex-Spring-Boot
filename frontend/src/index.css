@@ -139,3 +139,22 @@ img {
     transition: none !important;
   }
 }
+
+.btn--danger {
+  background: #d23c3c;
+  border-color: #d23c3c;
+  color: #fff;
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: #b02a2a;
+  border-color: #b02a2a;
+}
+
+.btn--danger-outline {
+  color: #d23c3c;
+}
+
+.btn--danger-outline:hover:not(:disabled) {
+  border-color: #d23c3c;
+}

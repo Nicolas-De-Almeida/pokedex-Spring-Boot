@@ -33,6 +33,7 @@ export default function Filters({
   favoritesCount,
   favoritesStatus,
   onRandom,
+  onCreate,
 }) {
   const sync = SYNC_STATUS[favoritesStatus]
 
@@ -79,6 +80,9 @@ export default function Filters({
         </span>
         <button className="btn btn--primary" onClick={onRandom}>
           🎲 Aleatório
+        </button>
+        <button className="btn btn--primary" onClick={onCreate}>
+          ➕ Novo Pokémon
         </button>
       </div>
     </section>

@@ -1,0 +1,156 @@
+.poke-form__hero {
+  display: grid;
+  gap: 10px;
+  padding: 26px 70px 22px 28px;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.poke-form__hero h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.poke-form__types {
+  display: flex;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.poke-form__body {
+  display: grid;
+  gap: 14px;
+  padding: 22px 28px 28px;
+}
+
+.poke-form__row {
+  display: flex;
+  gap: 14px;
+}
+
+.poke-form__field {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.poke-form__field--id {
+  width: 140px;
+}
+
+.poke-form__field--grow {
+  flex: 1;
+}
+
+.poke-form input,
+.poke-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.poke-form input:focus,
+.poke-form select:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.poke-form input:disabled {
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+
+.poke-form__stats {
+  display: grid;
+  gap: 10px;
+  margin: 4px 0 0;
+  padding: 14px 16px 16px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.poke-form__stats legend {
+  padding: 0 6px;
+  font-weight: 800;
+}
+
+.poke-form__stats legend span {
+  margin-left: 8px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.poke-form__stat {
+  display: grid;
+  grid-template-columns: 150px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.poke-form .poke-form__stat input[type='range'] {
+  padding: 0;
+  border: none;
+  accent-color: var(--red);
+}
+
+.poke-form__stat input[type='number'] {
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.poke-form__stat .poke-form__error {
+  grid-column: 1 / -1;
+}
+
+.poke-form__error {
+  color: #d23c3c;
+  font-weight: 700;
+}
+
+.poke-form__alert {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(210, 60, 60, 0.12);
+  color: #d23c3c;
+  font-weight: 700;
+}
+
+.poke-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .poke-form__row {
+    flex-direction: column;
+  }
+
+  .poke-form__field--id {
+    width: 100%;
+  }
+
+  .poke-form__stat {
+    grid-template-columns: 1fr 70px;
+  }
+
+  .poke-form__stat input[type='range'] {
+    display: none;
+  }
+
+  .poke-form__body {
+    padding: 18px;
+  }
+}
